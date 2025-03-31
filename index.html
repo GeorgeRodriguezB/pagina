@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: url('images/fondo_romantico.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: rgba(244, 183, 183, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(113, 98, 98, 0.1);
+        }
+        .carousel {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .carousel img {
+            width: 100%;
+            display: none;
+            border-radius: 10px;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .carousel-buttons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .carousel-buttons button {
+            background-color: #2b1f21;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .carousel-buttons button:hover {
+            background-color: #d3698d;
+        }
+        .question {
+            margin-top: 20px;
+        }
+        .buttons button {
+            font-size: 20px;
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        #noBtn {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Nuestra Historia</h1>
+        <p>Desde el día que nos conocimos, cada momento ha sido especial.Cada experiencia es un hermoso recuerdo a tu lado, no te 
+            imaginas lo afortunado que soy al tenerte en mi vida. Espero hacerte sentir aunque sea una parte de las cosas
+            preciosas que me haces sentir. Te amo y no te imaginas todo lo que haría por ti!
+             Gracias por ser parte de mi vida.</p>
+        
+        <h2>Nuestros Recuerdos</h2>
+        <div class="carousel">
+            <img src="images/foto1.jpg" alt="Este día me te hice la promesa de ser el mejor hombre en tu vida" class="active">
+            <img src="images/foto2.jpg" alt="Uno de nuestros primeros viajes solitos">
+            <img src="images/foto3.jpg" alt="2">        
+            <img src="images/foto4.jpg" alt="3">
+            <img src="images/foto5.jpg" alt="4">
+            <img src="images/foto6.jpg" alt="5">
+            <img src="images/foto7.jpg" alt="6">
+            <img src="images/foto8.jpg" alt="7">
+            <img src="images/foto10.jpg" alt="9">
+            <img src="images/foto11.jpg" alt="10">
+
+        </div>
+        <p id="caption">Nuestro primer viaje juntos, un recuerdo inolvidable.</p>
+        <div class="carousel-buttons">
+            <button onclick="prevImage()">&#10094; Anterior</button>
+            <button onclick="nextImage()">Siguiente &#10095;</button>
+        </div>
+        
+        <div class="question">
+            <h2>¿Quisieras pasar tu vida a mi lado?</h2>
+            <div class="buttons">
+                <button onclick="alert('¡Te entregaré mi vida entera!! 💖')">Sí</button>
+                <button id="noBtn" onmouseover="moverBoton()">No</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let index = 0;
+        const images = document.querySelectorAll(".carousel img");
+        const captions = [
+            "Este día me te hice la promesa de ser el mejor hombre en tu vida.",
+            "Uno de nuestros primeros viajes solitos!",
+            "Me encanta como nos vemos juntos!",
+            "Amo nuestras salidas!",
+            "El comienzo de una hermosa historia",
+            "Momentos inolvidables que llenan mi corazón!",
+            "Anhelo que nuestra hija saque esa mirada preciosa.",
+            "Espero siempre hacerla la mujer más afortunada.",
+            "Espero seguir almacenando recuerdos a tu lado!",
+            "Por más momentos que me llenen el alma de alegría!"
+        ];
+        const captionText = document.getElementById("caption");
+
+        function showImage(i) {
+            images[index].classList.remove("active");
+            index = (i + images.length) % images.length;
+            images[index].classList.add("active");
+            captionText.innerText = captions[index];
+        }
+
+        function prevImage() {
+            showImage(index - 1);
+        }
+
+        function nextImage() {
+            showImage(index + 1);
+        }
+
+        function moverBoton() {
+            let noBtn = document.getElementById('noBtn');
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+    </script>
+</body>
